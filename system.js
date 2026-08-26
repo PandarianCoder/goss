@@ -1,6 +1,6 @@
 {
     "id": "goss",
-    "title": "Ghost Ops Second Strike",
+    "title": "Ghost Ops: Second Strike",
     "description": "A system for playing Ghost Ops Second Strike, a game of covert operations in the modern world.",
     "version": "0.1.0",
     "compatability": {
