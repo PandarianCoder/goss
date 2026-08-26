@@ -23,5 +23,24 @@
     "styles": [
         "goss.css"
     ],
-    "documentTypes"
+    "documentTypes": {
+        "Actor": {
+            "operator": { "htmlFields": ["description", "notes"] },
+            "k9": { "htmlFields": ["description"] },
+            "vehicle": { "htmlFields": ["description"] },
+            "safehouse": { "htmlFields": ["description"] },
+            "tango": { "htmlFields": ["description"] },
+            "hvt": { "htmlFields": ["description"] }
+        },
+        "Item": {
+            "specialization": { "htmlFields": ["description"] },
+            "gear": { "htmlFields": ["description"] },
+            "armor": { "htmlFields": ["description"] },
+            "weapon": { "htmlFields": ["description"] },
+            "attachment": { "htmlFields": ["description"] },
+            "ammo": { "htmlFields": ["description"] },
+            "explosive": { "htmlFields": ["description"] },
+            "drone": { "htmlFields": ["description"] }
+        }
+    }
 }
