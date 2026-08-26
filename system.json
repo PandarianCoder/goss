@@ -27,8 +27,8 @@
         "Actor": {
             "operator": { "htmlFields": ["description", "notes"] },
             "k9": { "htmlFields": ["notes"] },
-            "vehicle": { "htmlFields": ["description"] },
-            "safehouse": { "htmlFields": ["description"] },
+            "vehicle": { "htmlFields": ["description", "notes"] },
+            "safehouse": { "htmlFields": ["description", "notes"] },
             "tango": { "htmlFields": ["description"] },
             "hvt": { "htmlFields": ["description"] }
         },
