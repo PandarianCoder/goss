@@ -3,7 +3,7 @@
     "title": "Ghost Ops: Second Strike",
     "description": "A system for playing Ghost Ops Second Strike, a game of covert operations in the modern world.",
     "version": "0.1.0",
-    "compatability": {
+    "compatibility": {
         "minimum": "14.367",
         "verified": "14"
     },
@@ -26,7 +26,7 @@
     "documentTypes": {
         "Actor": {
             "operator": { "htmlFields": ["description", "notes"] },
-            "k9": { "htmlFields": ["description"] },
+            "k9": { "htmlFields": ["notes"] },
             "vehicle": { "htmlFields": ["description"] },
             "safehouse": { "htmlFields": ["description"] },
             "tango": { "htmlFields": ["description"] },
