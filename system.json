@@ -1,0 +1,27 @@
+{
+    "id": "goss",
+    "title": "Ghost Ops Second Strike",
+    "description": "A system for playing Ghost Ops Second Strike, a game of covert operations in the modern world.",
+    "version": "0.1.0",
+    "compatability": {
+        "minimum": "14.367",
+        "verified": "14"
+    },
+    "url": "https://github.com/PandarianCoder/goss",
+    "manifest": "https://github.com/PandarianCoder/goss/blob/main/system.js",
+    "download": "",
+    "authors": [
+        {
+            "name": "PandarianCoder",
+            "url": "https://github.com/PandarianCoder",
+            "flags": {}
+        }
+    ],
+    "esmodules": [
+        "goss.mjs"
+    ],
+    "styles": [
+        "goss.css"
+    ],
+    "documentTypes"
+}
