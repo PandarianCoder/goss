@@ -1,6 +1,6 @@
 import BaseItemData from "./base-item.mjs";
 
-const { SchemaField, NumberField, StringField, ArrayField, DocumentUUIDField } = foundry.data.fields;
+const { SchemaField, NumberField, StringField, ArrayField, DocumentUUIDField, BooleanField } = foundry.data.fields;
 
 export default class WeaponData extends BaseItemData {
     static defineSchema() {
@@ -58,7 +58,9 @@ export default class WeaponData extends BaseItemData {
 
             damage: new NumberField({ required: false, integer: true, initial: 0 }),
             areaOfEffect: new NumberField({ required: false, integer: true, initial: 0 }),
-            range: new NumberField({ required: false, integer: true, initial: 0 })
+            range: new NumberField({ required: false, integer: true, initial: 0 }),
+
+            equipped: new BooleanField ({ required: true, initial: false})
 
         };
     }
