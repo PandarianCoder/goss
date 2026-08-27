@@ -5,6 +5,8 @@ import SafehouseData from "./module/data/actor/safehouse.mjs";
 import TangoData from "./module/data/actor/tango.mjs";
 import HvtData from  "./module/data/actor/hvt.mjs";
 
+import OperatorSheet from "./module/sheets/actor/operator-sheet.mjs";
+
 import SpecializationData from "./module/data/item/specialization.mjs";
 import GearData from "./module/data/item/gear.mjs";
 import ArmorData from "./module/data/item/armor.mjs";
@@ -32,4 +34,12 @@ Hooks.once("init", () => {
     CONFIG.Item.dataModels.ammo = AmmoData;
     CONFIG.Item.dataModels.explosive = ExplosiveData;
     CONFIG.Item.dataModels.drone = DroneData;
+
+    const { DocumentSheetConfig } = foundry.applications.apps;
+
+    DocumentSheetConfig.registerSheet(foundry.documents.Actor, "goss", OperatorSheet, {
+        types: ["operator"],
+        makeDefault: true,
+        label: "GOSS.SheetLabels.Operator"
+    });
 });
