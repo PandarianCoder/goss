@@ -11,7 +11,7 @@ export default class OperatorSheet extends HandlebarsApplicationMixin(ActorSheet
     static PARTS = {
         header: { template: "systems/goss/templates/actor/operator/header.hbs" },
         tabs: { template: "templates/generic/tab-navigation.hbs" },
-        main: { template: "systems/goss/templates/actor/operator/inventory.hbs", scrollable: [""] },
+        main: { template: "systems/goss/templates/actor/operator/main.hbs", scrollable: [""] },
         inventory: { template: "systems/goss/templates/actor/operator/inventory.hbs", scrollable: [""] },
         specializations: { template: "systems/goss/templates/actor/operator/specializations.hbs", scrollable: [""] },
         background: { template: "systems/goss/templates/actor/operator/background.hbs", scrollable: [""] }
