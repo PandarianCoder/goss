@@ -40,6 +40,13 @@ export default class OperatorSheet extends HandlebarsApplicationMixin(ActorSheet
         context.equippedWeapons = this.actor.items.filter(
             (item) => item.type === "weapon" && item.system.equipped
         );
+        context.weapons = this.actor.items.filter((i) => i.type === "weapon");
+        context.armor = this.actor.items.filter((i) => i.type === "armor");
+        context.gear = this.actor.items.filter((i) => i.type === "gear");
+        context.ammo = this.actor.items.filter((i) => i.type === "ammo");
+        context.attachments = this.actor.items.filter((i) => i.type === "attachments");
+        context.explosives = this.actor.items.filter((i) => i.type === "explosives");
+        context.drones = this.actor.items.filter((i) => i.type === "drones");
 
         return context;
     }
