@@ -5,7 +5,15 @@ export default class OperatorSheet extends HandlebarsApplicationMixin(ActorSheet
     static DEFAULT_OPTIONS = {
         classes: ["goss", "sheet", "actor", "operator"],
         position: {width: 720, height: 780},
-        window: { resizable: true }
+        window: { resizable: true },
+        actions: {
+            toggleEquipped: OperatorSheet.#onToggleEquipped,
+            editItem: OperatorSheet.#onEditItem,
+            deleteItem: OperatorSheet.#onDeleteItem,
+            createItem: OperatorSheet.#onCreateItem,
+            reloadAmmo: OperatorSheet.#onReloadAmmo,
+            setSpecializationRating: OperatorSheet.#onSetSpecializationRating,
+        }   
     };
 
     static PARTS = {
@@ -47,6 +55,7 @@ export default class OperatorSheet extends HandlebarsApplicationMixin(ActorSheet
         context.attachments = this.actor.items.filter((i) => i.type === "attachments");
         context.explosives = this.actor.items.filter((i) => i.type === "explosives");
         context.drones = this.actor.items.filter((i) => i.type === "drones");
+        context.specializations = this.actor.items.filter((i) => i.type === "specialization");
 
         return context;
     }
@@ -61,5 +70,56 @@ export default class OperatorSheet extends HandlebarsApplicationMixin(ActorSheet
                 break;
         }
         return context;
+    }
+
+    static async #onToggleEquipped(event, target) {
+        const item = this.actor.item.get(target.dataset.itemId);
+        if(!item) return;
+        await item.update({"system.equipped": !item.system.equipped});
+    }
+
+    static async #onEditItem(event, target) {
+        const  item = this.actor.items.get(target.dataset.itemId);
+        item?.sheet.render(true);
+    }
+
+    static async #onDeleteItem(event, target) {
+        const item = this.actor.items.get(target.dataset.itemId);
+        if(!item) return;
+
+        const confirmed = await foundry.applications.api.DialogV2.confirm({
+            window: {title: "Delete Item"},
+            content: `<p>Delete<strong>${item.name}</strong>?</p>`
+        });
+        if (!confirmed) return;
+
+        await item.delete();
+    }
+
+    static async #onCreateItem(event, target) {
+        const type = target.dataset.itemType;
+        if(!type) return;
+
+        const label = type.charAt(0).toUpperCase() + type.slice(1);
+        await this.actor.createEmbeddedDocuments("Item", [
+            {name: `New ${label}`, type}
+        ]);
+    }
+
+    static async #onReloadAmmo(event, target) {
+        const item = this.actor.items.get(target.dataset.itemId);
+        if (!item || item.system.trackingType !== "magazine") return;
+        if(item.system.magazines <= 0) return; //No Spare Mags to reload with
+
+        await item.update({
+            "system.magazines": item.system.magazines -1,
+            "system.roundsUsed": 0
+        });
+    }
+
+    static async #onSetSpecializationRating(event, target) {
+        const item = this.actor.items.get(target.dataset.itemId);
+        if (!item) return;
+        await item.update({ "system.rating" : Number(target.dataset.value) });
     }
 }

@@ -23,7 +23,102 @@
         <button type="button" data-action="createItem" data-item-type="weapon">+ Add Weapon</button>
     </div>
 
-    <div class="inventory-category armor">
-        
-    </div>
+    
+ <div class="inventory-category armor">
+    <h3>Armor</h3>
+    <ul>
+      {{#each armor}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <span class="item-slot">{{this.system.slot}}</span>
+          <span class="item-rating">AR {{this.system.armorRating}}</span>
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="armor">+ Add Armor</button>
+  </div>
+
+  <div class="inventory-category gear">
+    <h3>Gear</h3>
+    <ul>
+      {{#each gear}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <input type="number" name="items.{{this.id}}.system.quantity" value="{{this.system.quantity}}">
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="gear">+ Add Gear</button>
+  </div>
+
+  <div class="inventory-category ammo">
+    <h3>Ammo</h3>
+    <ul>
+      {{#each ammo}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          {{#if (eq this.system.trackingType "magazine")}}
+            <span class="mags">Mags: {{this.system.magazines}}</span>
+            <span class="boxes">Boxes: {{this.system.roundsUsed}} / 5</span>
+            <button type="button" data-action="reloadAmmo" data-item-id="{{this.id}}">Reload</button>
+          {{else}}
+            <span class="stack">Qty: {{this.system.quantity}}</span>
+          {{/if}}
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="ammo">+ Add Ammo</button>
+  </div>
+
+  <div class="inventory-category attachments">
+    <h3>Attachments</h3>
+    <ul>
+      {{#each attachments}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <span class="item-category">{{this.system.category}}</span>
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="attachment">+ Add Attachment</button>
+  </div>
+
+  <div class="inventory-category explosives">
+    <h3>Explosives</h3>
+    <ul>
+      {{#each explosives}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <span class="item-category">{{this.system.category}}</span>
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="explosive">+ Add Explosive</button>
+  </div>
+
+  <div class="inventory-category drones">
+    <h3>Drones (sUAS)</h3>
+    <ul>
+      {{#each drones}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <span class="item-category">{{this.system.category}}</span>
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="drone">+ Add Drone</button>
+  </div>
+
 </section>

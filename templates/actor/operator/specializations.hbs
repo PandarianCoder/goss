@@ -1,0 +1,33 @@
+<section class="tab secializations {{tab.cssClass}}" data-group="primary" data-tab="specializations">
+
+    <div class="specializations-list">
+        {{#each specializations}}
+        <div class="specialization-card" data-item-id="{{this.id}}">
+            <div class="spec-header">
+                <span class="spec-name">{{this.name}}</span>\
+
+                <select name="items.{{this.id}}.system.attribute">
+                    <option value="coordination" {{#if (eq this.system.attribute "coordination")}}selected{{/if}}>Coordination</option>
+                    <option value="reflexes" {{#if (eq this.system.attribute "reflexes")}}selected{{/if}}>Reflexes</option>
+                    <option value="fitness" {{#if (eq this.system.attribute "fitness")}}selected{{/if}}>Fitness</option>
+                    <option value="agility" {{#if (eq this.system.attribute "agility")}}selected{{/if}}>Agility</option>
+                    <option value="focus" {{#if (eq this.system.attribute "focus")}}selected{{/if}}>Focus</option>
+                    <option value="intellect" {{#if (eq this.system.attribute "intellect")}}selected{{/if}}>Intellect</option>
+                </select>
+            </div>
+
+            <div class="spec-rating">
+                <span class="rating-box {{#if (gte this.system.rating 1)}}filled{{/if}}" data-action="setSpecializationRating" data-item-id="{{this.id}}" data-value="1"></span>
+                <span class="rating-box {{#if (gte this.system.rating 2)}}filled{{/if}}" data-action="setSpecializationRating" data-item-id="{{this.id}}" data-value="2"></span>
+                <span class="rating-box {{#if (gte this.system.rating 3)}}filled{{/if}}" data-action="setSpecializationRating" data-item-id="{{this.id}}" data-value="3"></span>
+            </div>
+
+            <div class="spec-action">
+                <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+                <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <button type="button" data-action="createItem" data-item-type="specialization">+ Add Specialization</button>
+</section>
