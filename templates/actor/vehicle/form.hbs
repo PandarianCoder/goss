@@ -1,0 +1,82 @@
+<div class="vehicle-sheet">
+
+  <header class="vehicle-header">
+    <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
+
+    <div class="identity">
+      <input type="text" name="name" value="{{actor.name}}" placeholder="Vehicle Name">
+      <select name="system.category">
+        <option value="ground" {{#if (eq system.category "ground")}}selected{{/if}}>Ground</option>
+        <option value="aviation" {{#if (eq system.category "aviation")}}selected{{/if}}>Aviation</option>
+        <option value="maritime" {{#if (eq system.category "maritime")}}selected{{/if}}>Maritime</option>
+        <option value="uav" {{#if (eq system.category "uav")}}selected{{/if}}>UAV</option>
+        <option value="ugv" {{#if (eq system.category "ugv")}}selected{{/if}}>UGV</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="stats-row">
+    <label>Speed
+      <input type="number" name="system.speed" value="{{system.speed}}" min="0">
+    </label>
+    <label>Armour Rating
+      <input type="number" name="system.armourRating" value="{{system.armourRating}}" min="0">
+    </label>
+  </div>
+
+  <div class="weapons-block">
+    <h3>Weapons</h3>
+    <ul>
+      {{#each weapons}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <span class="item-category">{{this.system.category}}</span>
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="weapon">+ Add Weapon</button>
+  </div>
+
+  <div class="occupants-block">
+    <h3>Occupants</h3>
+    <div class="occupants-drop-zone" data-tooltip="Drag Actors here to add them as occupants">
+      {{#if occupants.length}}
+        <ul>
+          {{#each occupants}}
+            <li class="occupant">
+              <span class="occupant-name">{{this.name}}</span>
+              <button type="button" data-action="removeOccupant" data-uuid="{{this.uuid}}"><i class="fa-solid fa-xmark"></i></button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <em>Drop Actors here</em>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="editor-block">
+    <h3>Description</h3>
+    {{#if editable}}
+      <prose-mirror name="system.description" button="true" editable="{{editable}}" toggled="false" value="{{system.description}}">
+        {{{descriptionHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{descriptionHTML}}}
+    {{/if}}
+  </div>
+
+  <div class="editor-block">
+    <h3>Notes</h3>
+    {{#if editable}}
+      <prose-mirror name="system.notes" button="true" editable="{{editable}}" toggled="false" value="{{system.notes}}">
+        {{{notesHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{notesHTML}}}
+    {{/if}}
+  </div>
+
+</div>

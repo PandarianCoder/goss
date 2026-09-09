@@ -1,0 +1,81 @@
+<div class="k9-sheet">
+
+    <header class="k9-header">
+        <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
+
+        <div class="identity">
+            <input type="text" name="name" value="{{actor.name}}" placeholder="Dog Name">
+            <input type="text" name="system.breed" value="{{system.breed}}" placeholder="Breed">
+        </div>
+    </header>
+
+    <div class="attributes-grid">
+        <label>Track
+            <input type="number" name="system.attributes.track" value="{{system.attributes.track}}" min="0" max="7">
+        </label>
+
+        <label>Combat
+            <input type="number" name="system.attributes.combat" value="{{system.attributes.combat}}" min="0" max="7">
+        </label>
+
+        <label>Detect
+            <input type="number" name="system.attributes.detect" value="{{system.attributes.detect}}" min="0" max="7">
+        </label>
+
+        <label>Stealth
+            <input type="number" name="system.attributes.stealth" value="{{system.attributes.stealth}}" min="0" max="7">
+        </label>
+
+        <label>Fitness
+            <input type="number" name="system.attributes.fitness" value="{{system.attributes.fitness}}" min="0" max="7">
+        </label>
+    </div>
+
+    <div class="health-block">
+        <label>Wounds
+            <input type="number" name="system.health.wounds" value="{{system.health.wounds}}" min="0" max="7">
+        </label>
+        <span>/{{system.health.max}}</span>
+    </div>
+
+    <div class="derived-stats">
+        <div class="stat"><span class="label">Damage Bonus</span><span class="value">{{system.derived.damageBonus}}</span></div>
+        <div class="stat"><span class="label">Defence</span><span class="value">{{system.derived.defence}}</span></div>
+        <div class="stat"><span class="label">Initiative</span><span class="value">{{system.derived.initiative}}</span></div>
+        <div class="stat"><span class="label">Actions</span><span class="value">{{system.derived.actions}}</span></div>            
+        <div class="stat"><span class="label">Perception</span><span class="value">{{system.derived.perception}}</span></div>
+    </div>
+
+    <div class="resources">
+        <label>Boosts
+            <input type="number" name="system.boosts" value="{{system.boosts}}" min="0" max="5">
+        </label>
+    </div>
+
+    <div class="handler-field">
+        <label>Handler</label>
+        <div class="handler-drop-zone" data-tooltip="Drag an Operator here to assign as Handler">
+            {{#if handlerActor}}
+            <span class="handler-name">{{handlerActor.name}}</span>
+            <button type="button" data-action="clearHandler"><i class="fa-solid fa-xmark"></i></button>
+            {{else}}
+                <em>Drop an Operator here</em>
+            {{/if}}
+    </div>
+
+    <div class="notes-block">
+        <h3>Notes</h3>
+        {{#if editable}}
+        <prose-mirror
+        name="system.notes"
+        button="true"
+        editable="{{editable}}"
+        toggled="false"
+        value="{{system.notes}}">
+        {{notesHTML}}
+        </prose-mirror>
+        {{else}}
+            {{notesHTML}}
+        {{/if}}
+    </div>
+</div>

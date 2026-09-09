@@ -6,6 +6,8 @@ import TangoData from "./module/data/actor/tango.mjs";
 import HvtData from  "./module/data/actor/hvt.mjs";
 
 import OperatorSheet from "./module/sheets/actor/operator-sheet.mjs";
+import K9Sheet from "./module/sheets/actor/k9-sheet.mjs";
+import VehicleSheet from "./module/sheets/actor/vehicle-sheet.mjs";
 
 import SpecializationData from "./module/data/item/specialization.mjs";
 import GearData from "./module/data/item/gear.mjs";
@@ -42,4 +44,16 @@ Hooks.once("init", () => {
         makeDefault: true,
         label: "GOSS.SheetLabels.Operator"
     });
+
+    DocumentSheetConfig.registerSheet(foundry.documents.Actor, "goss", K9Sheet, {
+        types: ["k9"],
+        makeDefault: true,
+        label: "GOSS.SheetLabels.K9"
+    });
+
+    DocumentSheetConfig.registerSheet(foundry.documents.Actor, "goss", VehicleSheet, {
+        types: ["vehicle"],
+        makeDefault: true,
+        label: "GOSS.SheetLabels.Vehicle"
+    })
 });
