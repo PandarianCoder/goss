@@ -69,6 +69,17 @@ export default class OperatorSheet extends HandlebarsApplicationMixin(ActorSheet
                 context.tab = context.tabs[partId];
                 break;
         }
+
+        if (partId === "background"){
+            context.descriptionHTML = await foundry.applications.ux.TextEditor.enrichHTML(
+                this.actor.system.description, 
+                { relativeTo: this.actor, secrets: this.actor.isOwner }
+            );
+            context.notesHTML = await foundry.applications.ux.TextEditor.enrichHTML(
+                this.actor.system.notes,
+                { relativeTo: this.actor, secrets: this.actor.isOwner }
+            );
+        }
         return context;
     }
 

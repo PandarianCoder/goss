@@ -1,0 +1,33 @@
+<section class="tab background {{tab.cssClass}}" data-group="primary" data-tab="background">
+    <div class="editor-block">
+        <h3>Background</h3>
+        {{#if editable}}
+        <prose-mirror
+        name="system.description"
+        button="true"
+        editable="{{editable}}"
+        toggled="false"
+        value="{{system.description}}">
+        {{{descriptionHTML}}}
+        </prose-mirror>
+        {{else}}
+            {{{descriptionHTML}}}
+        {{/if}}
+    </div>
+
+    <div class="editor-block">
+        <h3>Notes</h3>
+        {{#if editable}}
+        <prose-mirror
+        name="system.notes"
+        button="true"
+        editable="{{editable}}"
+        toggled="false"
+        value="{{system.notes}}">
+        {{{notesHTML}}}
+        </prose-mirror>
+        {{else}}
+            {{{notesHTML}}}
+        {{/if}}
+    </div>
+</section>
