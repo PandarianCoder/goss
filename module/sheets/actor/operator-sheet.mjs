@@ -29,7 +29,7 @@ export default class OperatorSheet extends ItemCrudMixin(HandlebarsApplicationMi
             tabs: [
                 { id: "main", icon: "fa-solid fa-user" },
                 { id: "inventory", icon: "fa-solid fa-briefcase" },
-                { id: "specializations", icon: "fa-solid, fa-star" },
+                { id: "specializations", icon: "fa-solid fa-star" },
                 { id: "background", icon: "fa-solid fa-book" }
             ],
             labelPrefix: "GOSS.Operator.Tabs",
@@ -42,7 +42,7 @@ export default class OperatorSheet extends ItemCrudMixin(HandlebarsApplicationMi
 
         context.actor = this.actor;
         context.system = this.actor.system;
-        context.tabs = this._preparedTabs("primary");
+        context.tabs = this._prepareTabs("primary");
 
         context.equippedWeapons = this.actor.items.filter(
             (item) => item.type === "weapon" && item.system.equipped
@@ -51,9 +51,9 @@ export default class OperatorSheet extends ItemCrudMixin(HandlebarsApplicationMi
         context.armor = this.actor.items.filter((i) => i.type === "armor");
         context.gear = this.actor.items.filter((i) => i.type === "gear");
         context.ammo = this.actor.items.filter((i) => i.type === "ammo");
-        context.attachments = this.actor.items.filter((i) => i.type === "attachments");
-        context.explosives = this.actor.items.filter((i) => i.type === "explosives");
-        context.drones = this.actor.items.filter((i) => i.type === "drones");
+        context.attachments = this.actor.items.filter((i) => i.type === "attachment");
+        context.explosives = this.actor.items.filter((i) => i.type === "explosive");
+        context.drones = this.actor.items.filter((i) => i.type === "drone");
         context.specializations = this.actor.items.filter((i) => i.type === "specialization");
 
         return context;
