@@ -40,7 +40,7 @@ export default class K9Data extends BaseActorData {
             }),
 
             //Derived Stats Set Numbers
-            preparedDerivedData() {
+            prepareDerivedData() {
                 super.preparedDerivedData();
 
                 const attrs = this.attributes;
