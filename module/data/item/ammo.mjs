@@ -1,5 +1,7 @@
 import BaseItemData from "./base-item.mjs";
 
+const { NumberField, StringField, SchemaField, ArrayField } = foundry.data.fields;
+
 export default class AmmoData extends BaseItemData {
     static defineSchema() {
         return {

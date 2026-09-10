@@ -1,6 +1,6 @@
 import BaseItemData from "./base-item.mjs";
 
-const { NumberField, StringField } = foundry.data.fields;
+const { NumberField, StringField, SchemaField, ArrayField } = foundry.data.fields;
 
 export default class AttachmentData extends BaseItemData {
   static defineSchema() {
@@ -31,7 +31,7 @@ export default class AttachmentData extends BaseItemData {
             new StringField({ required: true }),
             { required: false }
           ),
-          condition: new StringField({ required: false, blank: true }) 
+          condition: new StringField({ required: false, blank: true })
         }),
         { required: false }
       ),
