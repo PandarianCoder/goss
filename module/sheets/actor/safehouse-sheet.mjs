@@ -4,23 +4,23 @@ import OccupantsDropMixin from "../mixins/occupants-drop-mixin.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
-export default class VehicleSheet extends ItemCrudMixin(OccupantsDropMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
+export default class SafehouseSheet extends ItemCrudMixin(OccupantsDropMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
   static DEFAULT_OPTIONS = {
-    classes: ["goss", "sheet", "actor", "vehicle"],
+    classes: ["goss", "sheet", "actor", "safehouse"],
     position: { width: 560, height: 640 },
     window: { resizable: true }
   };
 
   static PARTS = {
-    form: { template: "systems/goss/templates/actor/vehicle/form.hbs", scrollable: [""] }
+    form: { template: "systems/goss/templates/actor/safehouse/form.hbs", scrollable: [""] }
   };
 
   async _prepareContext(options) {
-    const context = await super._prepareContext(options); // occupants already included, via the mixin
+    const context = await super._prepareContext(options); // occupants included via the mixin
     context.actor = this.actor;
     context.system = this.actor.system;
 
-    context.weapons = this.actor.items.filter((i) => i.type === "weapon");
+    context.items = this.actor.items.contents;
 
     context.descriptionHTML = await foundry.applications.ux.TextEditor.enrichHTML(
       this.actor.system.description,

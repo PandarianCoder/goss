@@ -1,0 +1,80 @@
+<div class="safehouse-sheet">
+
+  <header class="safehouse-header">
+    <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
+
+    <div class="identity">
+      <input type="text" name="name" value="{{actor.name}}" placeholder="Safe House Name">
+      <select name="system.category">
+        <option value="apartment" {{#if (eq system.category "apartment")}}selected{{/if}}>Apartment</option>
+        <option value="house" {{#if (eq system.category "house")}}selected{{/if}}>House</option>
+        <option value="front" {{#if (eq system.category "front")}}selected{{/if}}>Front</option>
+        <option value="bunker" {{#if (eq system.category "bunker")}}selected{{/if}}>Bunker</option>
+      </select>
+      <label>Level
+        <input type="number" name="system.level" value="{{system.level}}" min="1">
+      </label>
+    </div>
+  </header>
+
+  <div class="items-block">
+    <h3>Items</h3>
+    <ul>
+      {{#each items}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+          <span class="item-name">{{this.name}}</span>
+          <span class="item-type">{{this.type}}</span>
+          <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <div class="add-item-buttons">
+      <button type="button" data-action="createItem" data-item-type="weapon">+ Weapon</button>
+      <button type="button" data-action="createItem" data-item-type="gear">+ Gear</button>
+      <button type="button" data-action="createItem" data-item-type="armor">+ Armor</button>
+      <button type="button" data-action="createItem" data-item-type="ammo">+ Ammo</button>
+    </div>
+  </div>
+
+  <div class="occupants-block">
+    <h3>Occupants</h3>
+    <div class="occupants-drop-zone" data-tooltip="Drag NPCs, Vehicles, or Operators here">
+      {{#if occupants.length}}
+        <ul>
+          {{#each occupants}}
+            <li class="occupant">
+              <span class="occupant-name">{{this.name}}</span>
+              <button type="button" data-action="removeOccupant" data-uuid="{{this.uuid}}"><i class="fa-solid fa-xmark"></i></button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <em>Drop Actors here</em>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="editor-block">
+    <h3>Description</h3>
+    {{#if editable}}
+      <prose-mirror name="system.description" button="true" editable="{{editable}}" toggled="false" value="{{system.description}}">
+        {{{descriptionHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{descriptionHTML}}}
+    {{/if}}
+  </div>
+
+  <div class="editor-block">
+    <h3>Notes</h3>
+    {{#if editable}}
+      <prose-mirror name="system.notes" button="true" editable="{{editable}}" toggled="false" value="{{system.notes}}">
+        {{{notesHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{notesHTML}}}
+    {{/if}}
+  </div>
+
+</div>

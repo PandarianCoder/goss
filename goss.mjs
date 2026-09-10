@@ -8,6 +8,7 @@ import HvtData from  "./module/data/actor/hvt.mjs";
 import OperatorSheet from "./module/sheets/actor/operator-sheet.mjs";
 import K9Sheet from "./module/sheets/actor/k9-sheet.mjs";
 import VehicleSheet from "./module/sheets/actor/vehicle-sheet.mjs";
+import SafehouseSheet from "./module/sheets/actor/safehouse-sheet.mjs";
 
 import SpecializationData from "./module/data/item/specialization.mjs";
 import GearData from "./module/data/item/gear.mjs";
@@ -56,4 +57,10 @@ Hooks.once("init", () => {
         makeDefault: true,
         label: "GOSS.SheetLabels.Vehicle"
     })
+
+    DocumentSheetConfig.registerSheet(foundry.documents.Actor, "goss", SafehouseSheet, {
+        types: ["safehouse"],
+        makeDefault: true,
+        label: "GOSS.SheetLabels.Safehouse"
+});
 });
