@@ -8,8 +8,8 @@
         "verified": "14"
     },
     "url": "https://github.com/PandarianCoder/goss",
-    "manifest": "https://github.com/PandarianCoder/goss/blob/main/system.json",
-    "download": "",
+    "manifest": "https://raw.githubusercontent.com/PandarianCoder/goss/main/system.json",
+    "download": "https://github.com/PandarianCoder/goss/archive/refs/heads/main.zip",
     "authors": [
         {
             "name": "PandarianCoder",
