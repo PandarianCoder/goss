@@ -1,4 +1,4 @@
-const { HandlebarsApplicationMixin } = foundry.application.api;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
 export default class K9Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {

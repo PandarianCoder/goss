@@ -1,5 +1,7 @@
 import BaseActorData from "./base-actor.mjs";
 
+const { SchemaField, NumberField, StringField, HTMLField } = foundry.data.fields;
+
 export default class OperatorData extends BaseActorData {
     static defineSchema() {
         return {
