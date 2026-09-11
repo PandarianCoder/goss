@@ -4,6 +4,7 @@ import OccupantsDropMixin from "../mixins/occupants-drop-mixin.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
+// Safehouse Sheet
 export default class SafehouseSheet extends ItemCrudMixin(OccupantsDropMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
   static DEFAULT_OPTIONS = {
     classes: ["goss", "sheet", "actor", "safehouse"],
@@ -11,6 +12,7 @@ export default class SafehouseSheet extends ItemCrudMixin(OccupantsDropMixin(Han
     window: { resizable: true }
   };
 
+  // 
   static PARTS = {
     form: { template: "systems/goss/templates/actor/safehouse/form.hbs", scrollable: [""] }
   };

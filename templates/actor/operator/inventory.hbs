@@ -1,30 +1,33 @@
 <section class="tab inventory {{tab.cssClass}}" data-group="primary" data-tab="inventory">
-    <div class="requisition">
-        <label>Reputation
-            <input type="number" name="system.unitReputation" value="{{system.unitReputation}}">
-        </label>
-    </div>
 
-    <div class="inventory-category weapons">
-        <h3>Weapons</h3>
-        <ul>
-            {{#each weapons}}
-            <li class="item draggable" data-item-id="{{this.id}}">
-                <span class="item-name">{{this.name}}</span>
-                <span class="item-category">{{this.system.category}}</span>
-                <label class="equipped">
-                    <input type="checkbox" data-action="toggleEquipped" data-item-id="{{this.id}}" {{#if this.system.equipped}}checked{{/if}}>Equipped
-                </label>
-                <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
-                <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
-            </li>
-            {{each}}
-        </ul>
-        <button type="button" data-action="createItem" data-item-type="weapon">+ Add Weapon</button>
-    </div>
+  // Requisition and Reputation
+  <div class="requisition">
+    <label>Reputation
+      <input type="number" name="system.unitReputation" value="{{system.unitReputation}}">
+    </label>
+  </div>
 
-    
- <div class="inventory-category armor">
+  // Weapons Inventory
+  <div class="inventory-category weapons">
+    <h3>Weapons</h3>
+    <ul>
+      {{#each weapons}}
+        <li class="item draggable" data-item-id="{{this.id}}">
+            <span class="item-name">{{this.name}}</span>
+            <span class="item-category">{{this.system.category}}</span>
+            <label class="equipped">
+              <input type="checkbox" data-action="toggleEquipped" data-item-id="{{this.id}}" {{#if this.system.equipped}}checked{{/if}}>Equipped
+            </label>
+            <button type="button" data-action="editItem" data-item-id="{{this.id}}"><i class="fa-solid fa-pen"></i></button>
+            <button type="button" data-action="deleteItem" data-item-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{/each}}
+    </ul>
+    <button type="button" data-action="createItem" data-item-type="weapon">+ Add Weapon</button>
+  </div>
+
+  // Armor Inventory  
+  <div class="inventory-category armor">
     <h3>Armor</h3>
     <ul>
       {{#each armor}}
@@ -40,6 +43,7 @@
     <button type="button" data-action="createItem" data-item-type="armor">+ Add Armor</button>
   </div>
 
+  // Gear Inventory
   <div class="inventory-category gear">
     <h3>Gear</h3>
     <ul>
@@ -55,6 +59,7 @@
     <button type="button" data-action="createItem" data-item-type="gear">+ Add Gear</button>
   </div>
 
+  // Ammo Inventory
   <div class="inventory-category ammo">
     <h3>Ammo</h3>
     <ul>
@@ -76,6 +81,7 @@
     <button type="button" data-action="createItem" data-item-type="ammo">+ Add Ammo</button>
   </div>
 
+  // Attachments Inventory
   <div class="inventory-category attachments">
     <h3>Attachments</h3>
     <ul>
@@ -91,6 +97,7 @@
     <button type="button" data-action="createItem" data-item-type="attachment">+ Add Attachment</button>
   </div>
 
+  // Explosives Inventory
   <div class="inventory-category explosives">
     <h3>Explosives</h3>
     <ul>
@@ -106,6 +113,7 @@
     <button type="button" data-action="createItem" data-item-type="explosive">+ Add Explosive</button>
   </div>
 
+  // Drone Inventory
   <div class="inventory-category drones">
     <h3>Drones (sUAS)</h3>
     <ul>

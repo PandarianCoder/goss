@@ -1,8 +1,12 @@
 <div class="safehouse-sheet">
 
+  // Header
   <header class="safehouse-header">
+    
+    // Portrait
     <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
 
+    // Identity
     <div class="identity">
       <input type="text" name="name" value="{{actor.name}}" placeholder="Safe House Name">
       <select name="system.category">
@@ -17,6 +21,7 @@
     </div>
   </header>
 
+  // Safe House Fields
   <div class="items-block">
     <h3>Items</h3>
     <ul>
@@ -37,6 +42,7 @@
     </div>
   </div>
 
+  // Safe House Occupants
   <div class="occupants-block">
     <h3>Occupants</h3>
     <div class="occupants-drop-zone" data-tooltip="Drag NPCs, Vehicles, or Operators here">
@@ -55,6 +61,7 @@
     </div>
   </div>
 
+  // Description and Notes
   <div class="editor-block">
     <h3>Description</h3>
     {{#if editable}}

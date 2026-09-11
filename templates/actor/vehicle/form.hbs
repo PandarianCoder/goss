@@ -1,8 +1,10 @@
 <div class="vehicle-sheet">
 
+  // Header
   <header class="vehicle-header">
     <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
 
+    // Identity
     <div class="identity">
       <input type="text" name="name" value="{{actor.name}}" placeholder="Vehicle Name">
       <select name="system.category">
@@ -15,6 +17,7 @@
     </div>
   </header>
 
+  // Vehicle Fields
   <div class="stats-row">
     <label>Speed
       <input type="number" name="system.speed" value="{{system.speed}}" min="0">
@@ -24,6 +27,7 @@
     </label>
   </div>
 
+  // Vehicle Weapons
   <div class="weapons-block">
     <h3>Weapons</h3>
     <ul>
@@ -39,6 +43,7 @@
     <button type="button" data-action="createItem" data-item-type="weapon">+ Add Weapon</button>
   </div>
 
+  // Vehicle Occupants
   <div class="occupants-block">
     <h3>Occupants</h3>
     <div class="occupants-drop-zone" data-tooltip="Drag Actors here to add them as occupants">
@@ -57,6 +62,7 @@
     </div>
   </div>
 
+  // Description and Notes
   <div class="editor-block">
     <h3>Description</h3>
     {{#if editable}}

@@ -1,0 +1,44 @@
+<div class="gear-sheet">
+
+  <header class="item-header">
+    <!-- data-action="editImage" is a built-in Foundry behavior (from DocumentSheetV2,
+         which ItemSheetV2 extends) — clicking the portrait opens the file picker
+         automatically, no custom code needed. -->
+    <img class="portrait" src="{{item.img}}" data-action="editImage" data-edit="img" alt="{{item.name}}">
+
+    <!-- name="name" (no "system." prefix) reaches the Item document's own built-in
+         name field, same convention as every Actor sheet's name input. -->
+    <input type="text" name="name" value="{{item.name}}" placeholder="Gear Name">
+  </header>
+
+  <div class="gear-fields">
+    <!-- Straightforward inputs — each "name" attribute is a direct path into
+         this Item's system data, and Foundry auto-saves on change since this
+         whole sheet is one big <form> under the hood (handled by DocumentSheetV2). -->
+    <label>Quantity
+      <input type="number" name="system.quantity" value="{{system.quantity}}" min="0">
+    </label>
+    <label>Encumbrance
+      <input type="number" name="system.encumbrance" value="{{system.encumbrance}}" min="0">
+    </label>
+    <label>Requisition Points
+      <input type="number" name="system.requisitionPoints" value="{{system.requisitionPoints}}" min="0">
+    </label>
+  </div>
+
+  <div class="editor-block">
+    <h3>Description</h3>
+    <!-- {{#if editable}} checks a value ItemSheetV2 already puts in context —
+         true if this user can edit the item, false for read-only viewers. The
+         <prose-mirror> element only appears for editors; everyone else just sees
+         the already-rendered HTML. -->
+    {{#if editable}}
+      <prose-mirror name="system.description" button="true" editable="{{editable}}" toggled="false" value="{{system.description}}">
+        {{{descriptionHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{descriptionHTML}}}
+    {{/if}}
+  </div>
+
+</div>

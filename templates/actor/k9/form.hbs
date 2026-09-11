@@ -1,14 +1,19 @@
 <div class="k9-sheet">
 
+    // Header
     <header class="k9-header">
+
+        // Portrait
         <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
 
+        // Identity
         <div class="identity">
             <input type="text" name="name" value="{{actor.name}}" placeholder="Dog Name">
             <input type="text" name="system.breed" value="{{system.breed}}" placeholder="Breed">
         </div>
     </header>
 
+    // Attributes
     <div class="attributes-grid">
         <label>Track
             <input type="number" name="system.attributes.track" value="{{system.attributes.track}}" min="0" max="7">
@@ -31,6 +36,7 @@
         </label>
     </div>
 
+    // Health
     <div class="health-block">
         <label>Wounds
             <input type="number" name="system.health.wounds" value="{{system.health.wounds}}" min="0" max="7">
@@ -38,6 +44,7 @@
         <span>/{{system.health.max}}</span>
     </div>
 
+    // Derived Stats
     <div class="derived-stats">
         <div class="stat"><span class="label">Damage Bonus</span><span class="value">{{system.derived.damageBonus}}</span></div>
         <div class="stat"><span class="label">Defence</span><span class="value">{{system.derived.defence}}</span></div>
@@ -46,12 +53,14 @@
         <div class="stat"><span class="label">Perception</span><span class="value">{{system.derived.perception}}</span></div>
     </div>
 
+    // Meta Currency
     <div class="resources">
         <label>Boosts
             <input type="number" name="system.boosts" value="{{system.boosts}}" min="0" max="5">
         </label>
     </div>
 
+    // Handler
     <div class="handler-field">
         <label>Handler</label>
         <div class="handler-drop-zone" data-tooltip="Drag an Operator here to assign as Handler">
@@ -63,6 +72,7 @@
             {{/if}}
     </div>
 
+    // Notes
     <div class="notes-block">
         <h3>Notes</h3>
         {{#if editable}}

@@ -40,7 +40,7 @@
             "attachment": { "htmlFields": ["description"] },
             "ammo": { "htmlFields": ["description"] },
             "explosive": { "htmlFields": ["description"] },
-            "drone": { "htmlFields": ["description"] }
+            "drone": { "htmlFields": ["description"] } 
         }
     }
 }

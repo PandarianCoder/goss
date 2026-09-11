@@ -4,6 +4,7 @@ import OccupantsDropMixin from "../mixins/occupants-drop-mixin.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
+// Sheet for vehicles
 export default class VehicleSheet extends ItemCrudMixin(OccupantsDropMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
   static DEFAULT_OPTIONS = {
     classes: ["goss", "sheet", "actor", "vehicle"],
@@ -11,10 +12,12 @@ export default class VehicleSheet extends ItemCrudMixin(OccupantsDropMixin(Handl
     window: { resizable: true }
   };
 
+  // Template parts for the sheet
   static PARTS = {
     form: { template: "systems/goss/templates/actor/vehicle/form.hbs", scrollable: [""] }
   };
 
+  // Prepare data for rendering the sheet
   async _prepareContext(options) {
     const context = await super._prepareContext(options); // occupants already included, via the mixin
     context.actor = this.actor;

@@ -1,0 +1,60 @@
+<div class="tango-sheet">
+
+  // Header
+  <header class="tango-header">
+    <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
+
+    <div class="identity">
+      <input type="text" name="name" value="{{actor.name}}" placeholder="Tango Name">
+      <select name="system.tier">
+        <option value="minor" {{#if (eq system.tier "minor")}}selected{{/if}}>Minor</option>
+        <option value="standard" {{#if (eq system.tier "standard")}}selected{{/if}}>Standard</option>
+        <option value="major" {{#if (eq system.tier "major")}}selected{{/if}}>Major</option>
+      </select>
+    </div>
+  </header>
+
+  // Stats
+  <div class="stats-grid">
+    <label>Awareness
+      <input type="number" name="system.awareness" value="{{system.awareness}}" min="0">
+    </label>
+    <label>Skill
+      <input type="number" name="system.skill" value="{{system.skill}}" min="0">
+    </label>
+    <label>Ranged
+      <input type="number" name="system.ranged" value="{{system.ranged}}" min="0">
+    </label>
+    <label>Melee
+      <input type="number" name="system.melee" value="{{system.melee}}" min="0">
+    </label>
+    <label>Defence
+      <input type="number" name="system.defence" value="{{system.defence}}" min="0">
+    </label>
+    <label>Morale
+      <input type="number" name="system.morale" value="{{system.morale}}" min="0">
+    </label>
+  </div>
+
+  // Wounds
+  <div class="wounds-block">
+    <label>Wounds
+      <input type="number" name="system.wounds.value" value="{{system.wounds.value}}" min="0">
+    </label>
+    <span>/</span>
+    <input type="number" name="system.wounds.max" value="{{system.wounds.max}}" min="0">
+  </div>
+
+  // Description and Notes
+  <div class="editor-block">
+    <h3>Description</h3>
+    {{#if editable}}
+      <prose-mirror name="system.description" button="true" editable="{{editable}}" toggled="false" value="{{system.description}}">
+        {{{descriptionHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{descriptionHTML}}}
+    {{/if}}
+  </div>
+
+</div>

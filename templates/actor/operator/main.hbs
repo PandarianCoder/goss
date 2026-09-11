@@ -1,4 +1,6 @@
 <section class="tab main {{tab.cssClass}}" data-group="primary" data-tab="main">
+
+    // Header
     <div class="identity-row">
         <label>Age
             <input type="number" name="system.age" value="{{system.age}}">
@@ -14,6 +16,7 @@
         </label>
     </div>
 
+    // Attributes
     <div class="attributes-grid">
         <label>Coordination
             <input type="number" name="system.attributes.coordination" value="{{system.attributes.coordination}}" min="0" max="7">
@@ -35,6 +38,7 @@
         </label>
     </div>
 
+    // Health
     <div class="health-block">
         <label>Wounds
             <input type="number" name="system.health.wounds" value="{{system.health.wounds}}" min="0">
@@ -42,6 +46,7 @@
         <span>/ {{system.health.max}}</span>
     </div>
 
+    // Derived Stats
     <div class="derived-stats">
         <div class="stat"><span class="label">Damage Bonus</span><span class="value">{{system.derived.damageBonus}}</span></div>
         <div class="stat"><span class="label">Defence</span><span class="value">{{system.derived.defence}}</span></div>
@@ -51,6 +56,7 @@
         <div class="stat"><span class="label">Perception</span><span class="value">{{system.derived.perception}}</span></div>
     </div>
 
+    // Meta Currency
     <div class="resources">
         <label>Boosts
             <input type="number" name="system.boosts" value="{{system.boosts}}" min="0" max="5">
@@ -60,6 +66,7 @@
         </label>
     </div>
 
+    // Equipped Weapons
     <div class="equipped-weapons">
         <h3>Equipped Weapon</h3>
         {{#if equippedWeapons.length}}

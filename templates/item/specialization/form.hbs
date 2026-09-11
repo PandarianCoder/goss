@@ -1,0 +1,40 @@
+<div class="specialization-sheet">
+
+    // Header
+  <header class="item-header">
+    <img class="portrait" src="{{item.img}}" data-action="editImage" data-edit="img" alt="{{item.name}}">
+    <input type="text" name="name" value="{{item.name}}" placeholder="Specialization Name">
+  </header>
+
+    // Specialization Fields
+  <div class="spec-fields">
+    <label>Attribute
+      <select name="system.attribute">
+        <option value="coordination" {{#if (eq system.attribute "coordination")}}selected{{/if}}>Coordination</option>
+        <option value="reflexes" {{#if (eq system.attribute "reflexes")}}selected{{/if}}>Reflexes</option>
+        <option value="fitness" {{#if (eq system.attribute "fitness")}}selected{{/if}}>Fitness</option>
+        <option value="agility" {{#if (eq system.attribute "agility")}}selected{{/if}}>Agility</option>
+        <option value="focus" {{#if (eq system.attribute "focus")}}selected{{/if}}>Focus</option>
+        <option value="intellect" {{#if (eq system.attribute "intellect")}}selected{{/if}}>Intellect</option>
+      </select>
+    </label>
+
+    // Rating
+    <label>Rating
+      <input type="number" name="system.rating" value="{{system.rating}}" min="1" max="3">
+    </label>
+  </div>
+
+    // Description and Notes
+  <div class="editor-block">
+    <h3>Description</h3>
+    {{#if editable}}
+      <prose-mirror name="system.description" button="true" editable="{{editable}}" toggled="false" value="{{system.description}}">
+        {{{descriptionHTML}}}
+      </prose-mirror>
+    {{else}}
+      {{{descriptionHTML}}}
+    {{/if}}
+  </div>
+
+</div>
